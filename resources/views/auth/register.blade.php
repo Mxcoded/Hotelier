@@ -19,7 +19,9 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div>
                     <div class="text-center pt-3 pb-3">
-                        <span class="db"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
+                        <a href="/">
+                            <span class="db"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
+                        </a>
                     </div>
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <!-- Form -->
@@ -63,14 +65,14 @@
                             </div>
                         </div>
                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
+                            {{ __('Déjà en enregistré?') }}
                         </a>
                         <div class="row border-top border-secondary">
                             <div class="col-12">
                                 <div class="form-group">
                                     <div class="pt-3 d-grid">
                                         <button class="btn btn-block btn-lg btn-info" type="submit">
-                                            Sign Up
+                                            Enregistrer
                                         </button>
                                     </div>
                                 </div>

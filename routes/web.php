@@ -18,7 +18,7 @@ Route::get('admin', [AdminController::class, 'adminHome'])->name('admin/home')->
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {

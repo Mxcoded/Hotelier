@@ -27,7 +27,9 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center pt-3 pb-3">
-                        <span class="db"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
+                        <a href="/">
+                            <span class="db"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
+                        </a>
                     </div>
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <!-- Form -->
@@ -65,15 +67,18 @@
                                                 <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                                             </label>
                                         </div>
-                                        @if (Route::has('password.request'))
-                                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                                            <i class="mdi mdi-lock fs-4 me-1"></i>
-                                            {{ __('Forgot your password?') }}
-                                        </a>
-                                        @endif
                                         <button class="btn btn-success float-end text-white" type="submit">
                                             Login
                                         </button>
+                                        @if (Route::has('password.request'))
+                                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                            <i class="mdi mdi-lock fs-4 me-1"></i>
+                                            {{ __('Mot de passe oublié?') }}
+                                        </a>
+                                        <a class="nav-link underline text-sm text-warning" href="{{ route('register') }}">
+                                            <i class="mdi mdi-account-plus fs-3 me-1"></i>Pas
+                                            de compte?</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
