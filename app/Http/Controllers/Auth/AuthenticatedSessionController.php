@@ -31,8 +31,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $notice_user = "Vous vous etes connecter en tant que " . Auth::user()->name;
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME)->with([
+            "notification" => $notice_user,
+        ]);
     }
 
     /**
@@ -49,6 +52,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route("login")->with('notification', "le nouveau service a été bien crée");
+        return view("index")->with([
+            "notification" => "Deconnexion reussi",
+        ]);
     }
 }

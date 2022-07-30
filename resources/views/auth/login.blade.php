@@ -31,6 +31,11 @@
                             <span class="db"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
                         </a>
                     </div>
+                    @if(isset($notification))
+                    <section id="" class="mt-2">
+                        @include("inc.message-validation")
+                    </section>
+                    @endif
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <!-- Form -->
                     <form class="form-horizontal mt-3" id="loginform" method="POST" action="{{ route('login') }}">

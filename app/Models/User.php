@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nom',
+        'prenom',
+        'specialite',
+        'sexe',
+        'profile_id',
+        'telephone',
     ];
 
     /**
@@ -41,4 +47,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function activites()
+    {
+        return $this->hasMany(Activites::class);
+    }
+
+    public function annonces()
+    {
+        return $this->hasMany(Annonces::class);
+    }
+
+    public function commentaires()
+    {
+        return $this->hasMany(Commentaire::class);
+    }
+
+    public function programmes()
+    {
+        return $this->hasMany(Programme::class);
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
+
 }

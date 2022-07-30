@@ -38,7 +38,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay>
     @include('inc.entete');
     <main id="main">
 

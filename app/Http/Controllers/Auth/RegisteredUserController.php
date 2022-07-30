@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Profile;
 
 class RegisteredUserController extends Controller
 {
@@ -35,13 +36,31 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'nom' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'max:20'],
+            'prenom' => ['required', 'string', 'max:255'],
+            'sexe' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
+       // dd($request->telephone);
+
+        $profile = $request->profile;
+
+        $specialite = $request->specialite;
+        $profile = Profile::where("profile", $profile)->get(["id"]);
+        $profile = $profile[0]->id;
 
         $user = User::create([
+            'profile_id' => $profile,
             'name' => $request->name,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
             'email' => $request->email,
+            'telephone' => $request->telephone,
+            'sexe' => $request->sexe,
+            'specialite' => $specialite,
             'password' => Hash::make($request->password),
         ]);
 
